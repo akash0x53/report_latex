@@ -1,0 +1,59 @@
+
+\chapter{Implementation}
+
+example of adding code snippet
+\lstinputlisting[language=xml]{ui.xml}
+This Glade XML file clearly shows different widget included in GUI. For example, from line number 38 to 45 describes the main windows properties, its title, position on screen,etc.
+\section{Analysis}
+\subsubsection{Mathematical model}
+
+Let S be the system that takes input image and updates it with the selected template.\\
+S=\{$I,O,F,Sc,Fc$\}\\
+where,\\
+\indent I=Input\\
+\indent O=Ouput\\
+\indent T=Templates\\
+\indent Sc=Success case\\
+\indent Fc=Failure case\\
+
+Dm=\{$Dm1,Dm2,...,Dm_{n}|Dm_{i}$ is template applying function\} \\
+Dg=\{$Dg1,Dg2,...,Dg_{n}|Dg_{i}$ is updated image representation\} \\
+\indent Where,$Dg_{i}$=\{U\} U=\{$U1,U2,...,Un$\} Where, U is updated frames.\\
+
+\noindent $F1:$ template updation()\\
+$F1:$(Tm) Dgc\\
+$Tm$ selected template\\
+$Dgc$ updated image\\
+
+\begin{figure}[ht!]
+\centering
+\begin{tikzpicture}
+
+\node[ellipse,minimum height=5cm,draw=black,thick,minimum width=2.5cm,name=cir1,label=Dgc]{};
+
+\node[ellipse,minimum height=5cm,draw=black,thick,minimum width=2.5cm,node distance=4cm,name=cir2,label=Tm][left=of cir1]{};
+
+\coordinate (a) at (0,-1);
+\coordinate (b) at (-6,1);
+%\fill[blue](a) circle (3pt);
+%\fill[blue](b) circle (3pt);
+\draw (a)--(b);
+\end{tikzpicture}
+\caption{Venn diagram}
+\end{figure}
+
+\noindent SuccessCases: Sc=\{$Sc1\wedge Sc2 \wedge Sc3 \wedge Sc4$\}\\
+$Sc1$ Input frame generated correctly\\
+$Sc2$ Template selected correctly\\
+$Sc3$ Template applied successfully\\
+$Sc4$ Output frame generated successfully\\
+
+\noindent Failure Cases: Fc=\{$Fc1,Fc2,Fc3, Fc4$\}, O=$\phi$\\
+$Fc1$ Camera error\\
+$Fc2$ template not selected successfully\\
+$Fc3$ errors while applying template.\\
+$Fc4$ output file not displayed .
+\clearpage
+\section{Results}
+
+\clearpage

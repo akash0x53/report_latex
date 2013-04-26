@@ -1,0 +1,322 @@
+\chapter{Designing}
+
+
+Contains, SRS, UML diagrams, ER,DFDs\\
+
+example of table\\
+
+\subsubsection{Hardware requirements}
+
+\begin{table}[ht!]
+{\bf
+\begin{tabular}{l|l}
+\hline
+\textit{Processor} & Intel{\textsuperscript{\textregistered}} Core{\textsuperscript{\texttrademark}}2 Quad,Q8300, 2.50GHz \\
+\textit{Memory} & 2048MB\\
+\textit{Camera} & Logitech c270 (3MP, 800x600 RGB @ 20 fps)\\
+\textit{Display device} & Dell 22" TFT-LCD Monitor\\
+\textit{Other} & othes\\ \hline
+\end{tabular}
+}
+\end{table}
+
+\newpage
+\subsection{System Architecture}
+an example of Block diagram
+
+\begin{figure}[ht!]
+\centering
+\begin{tikzpicture}[mystyle/.style={draw,rectangle,fill=blue!30,thick,minimum width=3cm,minimum height=1.5cm}]
+
+\node[mystyle,text width=3cm,align=center](a){1};
+\node[mystyle,text width=3cm,align=center](b)[below=of a]{2};
+\node[mystyle,text width=3cm,align=center](c)[below=of b]{3};
+\node[mystyle,text width=3cm,align=center](d)[below=of c]{4};
+
+\node[mystyle,node distance=2cm,text width=3cm,align=center](e)[right=of a]{5};
+\node[mystyle,node distance=2cm,text width=3cm,align=center](f)[left=of c]{6};
+
+\node[mystyle,node distance=2cm,text width=3cm,align=center](g)[right=of d]{7};
+\node[mystyle,minimum width=1.5cm,minimum height=1cm](h)[left=of a]{Camera};
+\node[style={draw,trapezium,fill=blue!30,rotate=-90,above=4cm},node distance=0.1cm](z)[left=of h]{};
+
+
+\draw[->,ultra thick](a)--(b);
+\draw[->,ultra thick](b)--(c);
+\draw[->,ultra thick](c)--(d);
+\draw[->,ultra thick](f)--(c);
+\draw[->,ultra thick](a)--(e);
+\draw[->,ultra thick](e)|-(b);
+\draw[->,ultra thick](d)--(g);
+\draw[->,ultra thick](h)--(a);
+
+\end{tikzpicture}
+\caption{caption}
+\end{figure}
+
+\clearpage
+
+\section{ER Diagram, example of ER daigram}
+\input{er.tex}
+\clearpage
+
+\section{Data Flow Diagram,example}
+\subsection{Context level}
+\begin{figure}[ht!]
+\centering
+\begin{tikzpicture}
+
+%\begin{umlstate}{0}
+%\end{umlstate}
+
+%\filldraw[fill=yellow!30,label=0] (0,0) circle (1cm);
+\node[style={draw,circle,fill=yellow!30,minimum height=2.3cm}](a){process1};
+\node[style={draw,circle,fill=yellow!30,minimum height=2.3cm,node distance=3cm}](b)[right=of a]{process2};
+
+\node[style={draw,rectangle,minimum width=2.5cm,minimum height=1.5cm,fill=blue!30,node distance=3cm}](c)[left=of a]{Input1};
+\node[style={draw,rectangle,minimum width=2.5cm,minimum height=1.5cm,fill=blue!30}](d)[below right=of a]{output};
+
+\draw[ultra thick][->](c)--(a);
+\draw[ultra thick][->](a)--(b);
+\draw[ultra thick][->](b)|-(d);
+\draw[ultra thick][->](d)-|(c);
+\end{tikzpicture}
+\caption{DFD: Context level}
+\end{figure}
+
+\clearpage
+
+
+\section{UML Modelling}
+\begin{comment}
+sequence 
+1] use case [done
+2] class [done
+3] state [done
+4] sequence [doen
+5] activity
+6] deployment [done
+7] component [done
+\end{comment}
+
+\subsection{Usecase diagram}
+
+\begin{figure}[ht!]
+\begin{tikzpicture}
+\begin{umlsystem}[x=3,y=0]{Usecase}
+
+\umlactor[x=-4,y=-2]{Customer}
+\umlactor[x=5,y=-3]{System}
+\umlusecase[x=0,y=-1,name=cap_vid,fill=green!50]{usecase}
+\umlusecase[x=0,y=-2,name=proc,fill=green!50]{usecase}
+\umlusecase[x=0,y=-3,name=temp_sel,fill=green!50]{usecase}
+\umlusecase[x=0,y=-4,name=out,fill=green!50]{usecase}
+\umlassoc{Customer}{cap_vid}
+\umlassoc{Customer}{temp_sel}
+\umlassoc{System}{proc}
+\umlassoc{System}{out}
+\end{umlsystem}
+\end{tikzpicture}
+\caption{Usecase diagram}
+\end{figure}
+\clearpage
+
+\begin{comment}
+\subsection{Class Diagram}
+\begin{figure}[ht!]
+\begin{tikzpicture}
+\begin{umlpackage}{vdr}
+
+\umlclass[x=7,y=-1,width=3cm]{Video}{
+	\-- capture:cvcapture\\
+	\-- frame:array
+
+}{
+	+getCapture():cvcapture\\
+	+outFrame():array\\
+	+imagePlanes(image:array):array
+}
+
+\umlemptyclass[type=interface,x=11,y=-4]{vdr}
+{
+	+color:int\\
+}{}
+
+\umldep[anchor1=west,anchor2=25,geometry=--,stereo=uses]{RemoveBG}{NormalizedRGB}
+
+\umldep[geometry=--,anchor1=north,]{RemoveBG}{Video}
+
+\umlreal[angle1=0,angle2=north,anchor1=30,anchor2=north,geometry=-|,pos=.5]{MainUI}{vdr}
+
+\umlreal[geometry=-|]{Replace}{vdr}
+\umlaggreg[geometry=--,anchor1=-160]{Video}{NormalizedRGB}
+\umlassoc{Tshirt}{Replace}
+\umlassoc[geometry=|-,anchor1=130,anchor2=-30]{RemoveBG}{Tshirt}
+\umlassoc[geometry=-|-,anchor1=-45,anchor2=-140]{MainUI}{Replace}
+\end{umlpackage}
+\end{tikzpicture}
+\caption{Class diagram}
+\end{figure}
+\clearpage
+\end{comment}
+\subsection{State transition digram}
+
+\begin{figure}[ht!]
+\centering
+\scalebox{0.85}{
+
+\begin{tikzpicture}
+\umlstateinitial[name=start]
+
+\begin{umlstate}[name=cam,y=-3.5]{state1}
+\end{umlstate}
+
+\begin{umlstate}[name=video,y=-7.5]{state2}
+\end{umlstate}
+
+\begin{umlstate}[name=extract,y=-11.5]{state3}
+\end{umlstate}
+
+\begin{umlstate}[name=project,y=-11.5,x=6]{state4}
+\end{umlstate}
+
+
+\begin{umlstate}[name=templates,y=-15.5]{state5}
+\end{umlstate}
+
+\begin{umlstate}[name=display,y=-15.5,x=6]{state6}
+\end{umlstate}
+
+\begin{umlstate}[name=update,y=-19.5]{state7}
+\end{umlstate}
+
+\begin{umlstate}[name=next,y=-19.5,x=6]{state8}
+\end{umlstate}
+
+\umlstatefinal[name=stop,y=-22]
+
+\umltrans[arg=Ready]{start}{cam}
+\umltrans[arg=captures]{cam}{video}
+\umltrans[arg=Extract]{video}{extract}
+\umltrans[arg=project]{extract}{project}
+\umltrans[arg=GUI]{project}{display}
+\umltrans[arg=selection]{display}{templates}
+\umltrans{templates}{update}
+\umltrans{update}{next}
+\umlHVHtrans[anchor2=east,arm2=2cm,arm1=2cm,anchor1=east,arg=Yes]{next}{project}
+\umlVHtrans[arg=No]{next}{stop}
+
+\end{tikzpicture}
+}
+
+
+\caption{State diagram}
+\end{figure}
+\clearpage
+
+\subsection{Sequence diagram}
+
+%classes: Camera, Background subtraction, Detection, Replace, Out
+\begin{figure}[ht!]
+\centering
+\begin{sideways}
+\scalebox{1}
+{
+\begin{tikzpicture}
+\tikzumlset{font=\scriptsize}
+
+\begin{umlseqdiag}
+\umlobject[class=Main]{main}
+\umlobject[class=Camera]{cam}
+%\umlobject[class=Video,x=2.5]{video}
+\umlcreatecall[class=Video, draw obj=green!70!black,fill obj=green!30]{main}{video}
+\umlcreatecall[class=Remove, draw obj=green!70!black,fill obj=green!30]{video}{remove}
+%\umlcreatecall[class=Tshirt]{main}{tshirt}
+%\umlcrearecall[class=Replace]{tshirt}{replace}
+ %x=5
+\umlobject[class=Tshirt]{tshirt}%,x=7.6
+\umlcreatecall[class=Replace, draw obj=green!70!black,fill obj=green!30,]{tshirt}{replace}
+%\umlobject[class=Remove]{remove}%,x=10.5
+%\umlobject[class=Replace]{replace}%,x=14
+
+
+\begin{umlcallself}[op={provide GUI}]{main}
+\end{umlcallself}
+\begin{umlcall}[op={get\_frame()},return=frame]{video}{cam}
+\end{umlcall}
+
+\begin{umlcall}[op={background}]{cam}{remove}
+\end{umlcall}
+
+\begin{umlcall}[op={request o/p()},return=video]{main}{video}
+	\begin{umlcall}[op={normalized video}]{video}{remove}
+		\begin{umlcall}[op={processed}]{remove}{replace}
+			\begin{umlcall}[op={replacing}]{replace}{tshirt}
+				\begin{umlcall}[op={final o/p}]{tshirt}{main}
+					\begin{umlcallself}[op={display o/p}]{main}
+					\end{umlcallself}
+				\end{umlcall}
+			\end{umlcall}
+		\end{umlcall}
+	\end{umlcall}
+\end{umlcall}
+\end{umlseqdiag}
+\end{tikzpicture}
+}
+
+\end{sideways}
+\caption{Sequence diagram}
+\end{figure}
+\clearpage
+
+
+
+\subsection{Component Diagram}
+\begin{figure}[ht!]
+\centering
+\scalebox{0.80}{
+\begin{tikzpicture}
+\begin{umlcomponent}{Virtual dressing room}
+
+\begin{umlcomponent}{MainUI}
+\end{umlcomponent}
+
+\begin{umlcomponent}[x=6]{Camera}
+\end{umlcomponent}
+
+\begin{umlcomponent}[x=12,y=-2]{Video}
+\end{umlcomponent}
+
+\begin{umlcomponent}[x=0,y=-4]{Screen}
+\end{umlcomponent}
+
+\begin{umlcomponent}[x=5,y=-7]{Remove Back}
+\end{umlcomponent}
+
+\begin{umlcomponent}[x=5.5,y=-3.5]{vdr}
+\end{umlcomponent}
+%\umlrequiredinterface[interface=hue, distance=2cm,width=0.5cm]{vdr}
+
+
+\begin{umlcomponent}[x=11,y=-6]{Replace}
+\end{umlcomponent}
+
+\begin{umlcomponent}[x=10,y=-10]{Tshirt}
+\end{umlcomponent}
+
+\umlassemblyconnector[interface=hue]{Replace}{vdr}
+\umlassemblyconnector[interface=hue]{MainUI}{vdr}
+\umlassemblyconnector{Remove Back}{Video}
+\umlHVassemblyconnector{Screen}{Replace}
+\draw[draw=black,dashed][->](MainUI)|-(Video);
+\draw[draw=black,dashed][<-](Camera)-|(Video);
+\draw[draw=black,dashed][->](Tshirt)--(Remove Back);
+\draw[draw=black,dashed][<-](Tshirt)--(Replace);
+\draw[draw=black,dashed][<-](Screen)--(MainUI);
+
+\end{umlcomponent}
+\end{tikzpicture}
+}
+\caption{Component diagram}
+\end{figure}
+
