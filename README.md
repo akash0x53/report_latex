@@ -31,8 +31,9 @@ These are all you need for your project report.
 * asmmath - mathematical equations
 *tikz-er2 - drawing ER diagram
 * caption,subcaption - for subfigure
-* times - for change font to Times New Roman
-* algorithmicx - easy way to write algorithms in LaTeX
+* times - for change font to Times New Roman  
+* algorithmicx - easy way to write algorithms in LaTeX  
+
 ---
 ### Page setup
 ##### Top margin=Bottom margin= 1 in
