@@ -1,0 +1,62 @@
+\begin{figure}[ht!]
+\tikzstyle{every entity}=[top color=white,bottom color=blue!30,draw=blue!30!black!100, drop shadow,node distance=1cm,minimum width=3cm, minimum height=1cm]
+\tikzstyle{every relationship}=[top color=white,bottom color=red!30, draw=black!100,node distance=1cm,minimum width=1.5cm, minimum height=0.5cm]
+\tikzstyle{every attribute}=[top color=white,bottom color=yellow!40,draw=red, drop shadow,node distance=0.7cm,text width=2cm]
+
+\scalebox{0.78}{
+\begin{tikzpicture}
+
+\node[entity](cam){entity1};
+\node[relationship,text width=1.5cm](info)[right=of cam]{rel1} edge[<-,line width=2](cam);
+\node[relationship,text width=1.5cm](provides)[below=of info]{rel2} edge[<-,line width=2](cam);
+\node[entity](sys)[right=of info]{entity2} edge[<-,line width=2](info);
+\node[relationship,text width=2cm](norm)[below=of sys]{rel} edge[<-,line width=2](sys);
+\node[entity](vid)[below=of norm]{entity3} edge[<-,line width=2](provides) edge[<-,line width=2](norm) ;
+
+\node[relationship,text width=1.5cm](proces)[below =of vid]{rel} edge[<-,line width=2](vid);
+
+\node[entity](bg)[left=of proces]{entity} edge[<-,line width=2](proces);
+
+\node[entity](replace)[left=of bg]{entity} edge[<-,line width=2](bg);
+\node[entity,node distance=2cm](out)[above=of replace]{entity} edge[<-,line width=2](replace);
+\node[relationship](rel_replce)[below=of replace]{rel} edge[<-,line width=2](replace);
+
+\node[entity](tshirt)[right=of rel_replce]{entity} edge [<-,line width=2](rel_replce);
+
+%attributes started
+%Camera
+\node[attribute][left=of cam]{attribut} edge[line width=2,draw=blue] (cam);
+\node[attribute][above left=of cam]{attribute} edge[line width=2,draw=blue] (cam);
+
+%System
+\node[attribute][right=of sys]{attribute} edge[line width=2,draw=blue](sys);
+
+%video
+\node[attribute][right=of vid]{attribute} edge[line width=2,draw=blue](vid);
+\node[attribute][right=of vid]{attribute} edge[line width=2,draw=blue](vid);
+
+%replace
+\node[attribute][left=of replace]{attribute} edge[line width=2,draw=blue](replace);
+\node[attribute][above left=of replace] {attribute} edge[line width=2,draw=blue](replace);
+
+%tshirt
+\node[attribute][below right=of tshirt]{attribute} edge[line width=2,draw=blue](tshirt);
+\node[attribute][below=of tshirt]{attribute} edge[line width=2,draw=blue](tshirt);
+
+%removeBG
+\node[attribute,node distance=0.5cm][below left=of bg]{attribute} edge[line width=2,draw=blue](bg);
+\node[attribute,node distance=2.5cm][below right=of bg]{attribute} edge[line width=2,draw=blue](bg);
+\node[attribute][below=of bg]{attribute} edge[line width=2,draw=blue](bg);
+
+
+%output
+\node[attribute][above left=of out]{attribute} edge[line width=2,draw=blue](out);
+\node[attribute][above =of out]{attribute} edge[line width=2,draw=blue](out);
+\node[attribute][right=of out]{attribute} edge[line width=2,draw=blue](out);
+
+%arrows
+%\draw[link](cam)-|(info);
+\end{tikzpicture}
+}
+\caption{caption}
+\end{figure}

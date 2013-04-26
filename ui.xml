@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk+" version="2.24"/>
+  <!-- interface-naming-policy project-wide -->
+  <object class="GtkAboutDialog" id="about_dia">
+    <property name="can_focus">False</property>
+    <property name="border_width">5</property>
+    <property name="title" translatable="yes">About VDR</property>
+    <property name="modal">True</property>
+    <property name="window_position">center</property>
+    <property name="type_hint">dialog</property>
+    <property name="transient_for">vdr_main</property>
+    <property name="has_separator">True</property>
+    <property name="program_name">Virtual Dressing Room</property>
+    <property name="version">1.0</property>
+    <property name="copyright" translatable="yes">Copyrights (c) 2013 GAP</property>
+    <property name="comments" translatable="yes">The Virtual Mirror application</property>
+    <property name="license" translatable="yes">Virtual Dressing Room
+    .
+    .
+    .
+ <object class="GtkListStore" id="ls1">
+    <columns>
+      <!-- column-name col1 -->
+      <column type="GdkPixbuf"/>
+      <!-- column-name template -->
+      <column type="gint"/>
+    </columns>
+  </object>
+  <object class="GtkListStore" id="ls2">
+    <columns>
+      <!-- column-name col2 -->
+      <column type="GdkPixbuf"/>
+      <!-- column-name temp_no -->
+      <column type="gint"/>
+    </columns>
+  </object>
+  <object class="GtkWindow" id="vdr_main">
+    <property name="can_focus">False</property>
+    <property name="title" translatable="yes">Virtual Dressing Room</property>
+    <property name="window_position">center</property>
+    <property name="skip_taskbar_hint">True</property>
+    <property name="gravity">center</property>
+    <property name="has_resize_grip">False</property>
+    <property name="mnemonics_visible">False</property>
+    <child>
+      <object class="GtkHBox" id="hbox1">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="spacing">9</property>
+    .
+    .
+    .
+		<packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
