@@ -1,0 +1,39 @@
+\chapter{Research Methodology}
+
+Adding equation, Example:\\
+\noindent RGB to HSV conversion formula is as follows\cite{dip}.\\
+\textit{R, G, B are values of pixel}
+\begin{align}
+R'=R/255 \nonumber \\
+G'=G/255\nonumber \\
+B'=B/255\nonumber
+\end{align}
+\begin{eqnarray}
+Cmax=max(R', G', B')\nonumber \\
+Cmin=min(R', G', B')\nonumber 
+\end{eqnarray}
+\begin{eqnarray}
+\Delta=Cmax-Cmin\nonumber
+\end{eqnarray}
+\textit{Hue calculation}
+\begin{eqnarray}
+H=\begin{cases}
+	60^\circ \times \left(\frac{G'-B'}{\Delta} \mod 6\right) \text{if Cmax=R'}\\
+	60^\circ \times \left(\frac{B'-R'}{\Delta} + 2 \right) \text{if Cmax=G'}\\
+	60^\circ \times \left(\frac{R'-G'}{\Delta} + 4 \right) \text{if Cmax=B'}
+\end{cases}
+\end{eqnarray}
+\clearpage
+\noindent \textit{Saturation calculation}
+
+\begin{eqnarray}
+S=\begin{cases}
+	0 & \text{if}\Delta \text{=0} \\
+	\frac{\Delta}{Cmax} & \text{if}\Delta \neq \text{ 0}
+\end{cases}
+\end{eqnarray}
+\textit{Value calculation}
+\begin{eqnarray}
+\large{V=Cmax}
+\end{eqnarray}
+
