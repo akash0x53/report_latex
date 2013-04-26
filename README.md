@@ -1,12 +1,11 @@
-#Project report in LaTeX
+#Project report template in LaTeX
 ---
 
-Final year project report format in LaTeX.
-
+Final year project report template format in LaTeX.
 `report.tex' is main report file.
 
-Included examples of
-
+### Features
+- - -   
 * UML diagrams,ER diagrams,DFDs ( drawn using Tikz library)  
 * Block diagrams  
 * source code snippet  
@@ -41,3 +40,5 @@ These are all you need for your project report.
 ##### Top margin=Bottom margin= 1 in
 ##### Left margin=1.3in, Right margin=0.8in
 ##### Page size: A4, one sided
+
+[Reference](https://github.com/firesofmay/BE-Project-Final-Report-Latex-Template)
