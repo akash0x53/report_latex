@@ -1,0 +1,72 @@
+%\begingroup{
+%\setlength\parskip{-20pt}
+\chapter{Scheduling}
+%}
+
+Example of Gantt chart
+\begin{figure}[ht!]
+\centering
+\begin{sideways} %rotate figure
+\scalebox{1}{
+\begin{ganttchart}[hgrid=false, vgrid={*{13}{blue,dashed},*1{red,very thick}}, x unit=.7cm, y unit chart=.7cm, 
+bar/.style={fill=green, rounded corners=3pt,draw=none},bar height=.3,
+group/.style={fill=green},
+incomplete/.style={fill=red},
+canvas/.style={draw=blue,thick},
+title/.style={draw=blue,thick},
+grid/.style={draw=none}]{22}
+\gantttitle{Project Schedule}{22}
+\\
+\gantttitle{Jun-12}{2}
+\gantttitle{Jul}{2}
+\gantttitle{Aug}{2}
+\gantttitle{Sep}{2}
+\gantttitle{Oct}{2}
+\gantttitle{Nov}{2}
+\gantttitle{Dec}{2}
+\gantttitle{Jan-13}{2}
+\gantttitle{Feb}{2}
+\gantttitle{Mar}{2}
+\gantttitle{Apr}{2}
+\\
+\ganttgroup[progress=100]{\small Designing \& Modelling}{1}{10}\\*[0pt]
+\ganttbar[name=info,progress=100]{\bf \scriptsize Info gathering}{1}{3.7}\\
+\ganttlinkedbar[progress=100]{\bf \scriptsize  Outline diagrams}{2.7}{3}\\
+\ganttlinkedbar[progress=100]{\bf \scriptsize Math. model}{3}{4.3} \ganttnewline[thick,blue]
+
+\ganttbar[progress=100]{\bf \scriptsize Deciding functions}{3.3}{5.5}\\
+\ganttlinkedbar[name=func_depend,progress=100]{\bf \scriptsize Functional dependency}{5.5}{7}\\
+\ganttmilestone[name=submit,progress=100]{\bf \scriptsize Partial Report Submission}{10} \ganttnewline[thick,blue]
+\ganttlink{func_depend}{submit}
+
+\ganttgroup[progress=90]{Coding}{12}{17}\\*[0cm]
+\ganttbar[progress=100]{\bf \scriptsize setup}{12.7}{13.5}\\
+\ganttbar[progress=98]{\bf \scriptsize module1}{13.3}{13.8}\\
+\ganttlinkedbar[progress=95]{\bf \scriptsize modul2}{13.8}{14}\\
+\ganttlinkedbar[progress=93]{\bf \scriptsize module3}{14}{15.5}\\
+\ganttbar[name=interface,progress=99]{\bf \scriptsize module4}{13.8}{16.5}\\
+\ganttmilestone[name=finish_code]{\bf \scriptsize Finalized Coding}{17} \ganttnewline[thick,blue]
+\ganttlink{interface}{finish_code}
+
+\ganttgroup[progress=92]{Testing \& Deployment}{14}{22}\\*[0cm]
+\ganttbar[progress=85]{\bf \scriptsize Testing}{14}{20}\\
+\ganttlinkedbar[progress=100]{\bf \scriptsize Project Demo}{20}{20.2}\\
+\ganttbar[name=report,progress=100]{\bf \scriptsize Final Report}{20}{21.5}\\*[0.5cm]
+\ganttmilestone[name=end]{\bf \scriptsize Final Submission}{21.7}
+\ganttlink{report}{end}
+%\ganttlinkedbar{info}{3}{7} \ganttnewline
+%\ganttmilestone{Milestone}{7} \ganttnewline
+%\ganttbar{Final Task}{8}{12}
+%\ganttlink{elem2}{elem3}
+%\ganttlink{elem3}{elem4}
+\end{ganttchart}
+}
+\end{sideways}
+\caption[Project planner]{Project planner\\ \scriptsize{Note: Designing \& modelling phase includes information gathering also}}
+\label{fig:gantt}
+\end{figure}
+\clearpage
+\section{Work Breakdown Structure}
+
+\input{wbs.tex}
+
