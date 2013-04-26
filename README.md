@@ -3,6 +3,8 @@
 
 Final year project report format in LaTeX.
 
+`report.tex' is main report file.
+
 Included examples of
 
 * UML diagrams,ER diagrams,DFDs ( drawn using Tikz library)  
