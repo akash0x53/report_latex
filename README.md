@@ -30,7 +30,7 @@ These are all you need for your project report.
 * tikz - provides drawing functions, primitives and many facilities 
 * tikz-uml - drawing UML diagrams ( it draws 5 types of UMLs, excluding activity, Deployment)
 * asmmath - mathematical equations
-*tikz-er2 - drawing ER diagram
+* tikz-er2 - drawing ER diagram
 * caption,subcaption - for subfigure
 * times - for change font to Times New Roman  
 * algorithmicx - easy way to write algorithms in LaTeX  
